@@ -1,0 +1,1212 @@
+DROP DATABASE acme_filmes;
+CREATE DATABASE acme_filmes;
+use acme_filmes;
+
+CREATE TABLE Sexos(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(20) NOT NULL,
+    sigla VARCHAR(1) NOT NULL
+    );
+INSERT INTO Sexos(nome,sigla) VALUES
+    ('Masculino','M'),
+    ('Feminino','F'),
+    ('Não-declarado','N');
+
+CREATE TABLE Nacionalidades(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	pais VARCHAR(50) NOT NULL
+);
+INSERT INTO Nacionalidades(pais) VALUES
+('Afeganistão'),
+('África do Sul'),
+('Albânia'),
+('Alemanha'),
+('Andorra'),
+('Angola'),
+('Antígua e Barbuda'),
+('Arábia Saudita'),
+('Argélia'),
+('Argentina'),
+('Armênia'),
+('Austrália'),
+('Áustria'),
+('Azerbaijão'),
+('Bahamas'),
+('Bangladesh'),
+('Barbados'),
+('Barein'),
+('Bélgica'),
+('Belize'),
+('Benin'),
+('Bielorrússia'),
+('Bolívia'),
+('Bósnia e Herzegovina'),
+('Botsuana'),
+('Brasil'),
+('Brunei'),
+('Bulgária'),
+('Burquina Faso'),
+('Burundi'),
+('Butão'),
+('Cabo Verde'),
+('Camarões'),
+('Camboja'),
+('Canadá'),
+('Catar'),
+('Cazaquistão'),
+('Chade'),
+('Chile'),
+('China'),
+('Chipre'),
+('Cingapura'),
+('Colômbia'),
+('Comores'),
+('Congo'),
+('Coreia do Norte'),
+('Coreia do Sul'),
+('Costa do Marfim'),
+('Costa Rica'),
+('Croácia'),
+('Cuba'),
+('Dinamarca'),
+('Djibuti'),
+('Dominica'),
+('Egito'),
+('El Salvador'),
+('Emirados Árabes Unidos'),
+('Equador'),
+('Eritreia'),
+('Eslováquia'),
+('Eslovênia'),
+('Espanha'),
+('Estados Unidos'),
+('Estônia'),
+('Eswatini'),
+('Etiópia'),
+('Fiji'),
+('Filipinas'),
+('Finlândia'),
+('França'),
+('Gabão'),
+('Gâmbia'),
+('Gana'),
+('Geórgia'),
+('Granada'),
+('Grécia'),
+('Guatemala'),
+('Guiana'),
+('Guiné'),
+('Guiné Equatorial'),
+('Guiné-Bissau'),
+('Haiti'),
+('Honduras'),
+('Hungria'),
+('Iémen'),
+('Ilhas Marshall'),
+('Ilhas Salomão'),
+('Índia'),
+('Indonésia'),
+('Irã'),
+('Iraque'),
+('Irlanda'),
+('Islândia'),
+('Israel'),
+('Itália'),
+('Jamaica'),
+('Japão'),
+('Jordânia'),
+('Kiribati'),
+('Kosovo'),
+('Kuwait'),
+('Laos'),
+('Lesoto'),
+('Letônia'),
+('Líbano'),
+('Libéria'),
+('Líbia'),
+('Liechtenstein'),
+('Lituânia'),
+('Luxemburgo'),
+('Madagascar'),
+('Malásia'),
+('Malaui'),
+('Maldivas'),
+('Mali'),
+('Malta'),
+('Marrocos'),
+('Maurício'),
+('Mauritânia'),
+('México'),
+('Micronésia'),
+('Moçambique'),
+('Moldávia'),
+('Mônaco'),
+('Mongólia'),
+('Montenegro'),
+('Myanmar'),
+('Namíbia'),
+('Nauru'),
+('Nepal'),
+('Nicarágua'),
+('Níger'),
+('Nigéria'),
+('Noruega'),
+('Nova Zelândia'),
+('Omã'),
+('Países Baixos'),
+('Palau'),
+('Panamá'),
+('Papua-Nova Guiné'),
+('Paquistão'),
+('Paraguai'),
+('Peru'),
+('Polônia'),
+('Portugal'),
+('Quênia'),
+('Quirguistão'),
+('Quiribati'),
+('Reino Unido'),
+('República Centro-Africana'),
+('República Checa'),
+('República Democrática do Congo'),
+('República Dominicana'),
+('Romênia'),
+('Ruanda'),
+('Rússia'),
+('Salvador'),
+('Samoa'),
+('San Marino'),
+('Santa Lúcia'),
+('São Cristóvão e Nevis'),
+('São Tomé e Príncipe'),
+('São Vicente e Granadinas'),
+('Seicheles'),
+('Senegal'),
+('Serra Leoa'),
+('Sérvia'),
+('Síria'),
+('Somália'),
+('Sri Lanka'),
+('Suazilândia'),
+('Sudão'),
+('Sudão do Sul'),
+('Suécia'),
+('Suíça'),
+('Suriname'),
+('Tailândia'),
+('Taiwan'),
+('Tajiquistão'),
+('Tanzânia'),
+('Timor-Leste'),
+('Togo'),
+('Tonga'),
+('Trinidad e Tobago'),
+('Tunísia'),
+('Turcomenistão'),
+('Turquia'),
+('Tuvalu'),
+('Ucrânia'),
+('Uganda'),
+('Uruguai'),
+('Uzbequistão'),
+('Vanuatu'),
+('Vaticano'),
+('Venezuela'),
+('Vietnã'),
+('Zâmbia'),
+('Zimbábue');
+
+
+
+
+CREATE TABLE Diretores(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(100) NOT NULL,
+    nascimento DATE NOT NULL,
+    falecimento DATE,
+    foto VARCHAR(200) NOT NULL,
+    id_sexo INT,
+    CONSTRAINT SexoDiretor FOREIGN KEY (id_sexo) REFERENCES Sexos(id)
+    
+);
+INSERT INTO Diretores(nome, nascimento,falecimento,foto,id_sexo)VALUES
+(
+'Quentin Tarantino',
+'1963-03-27',
+null,
+'https://br.web.img3.acsta.net/c_310_420/pictures/19/03/19/17/22/2985063.jpg',
+1
+),
+(
+	'Joe Russo',
+	'1971-07-08',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/15/11/24/17/01/231901.jpg',
+    1
+),
+(
+	'Anthony Russo',
+	'1970-02-03',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/15/11/24/16/59/250993.jpg',
+    1
+),
+(
+	'Dennis Dugan',
+	'1946-09-05',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/14/01/15/19/07/112586.jpg',
+    1
+),
+(
+	'Sergio Pablos',
+	'1970-01-01',
+    null,
+	'https://static.wikia.nocookie.net/disney/images/9/91/Sergio_Pablos.webp/revision/latest?cb=20211109044038',
+    1
+),
+(
+	'David Fincher',
+	'1946-08-28',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/medias/nmedia/18/64/19/48/19965756.jpg',
+    1
+),
+(
+	'Mark Steven Johnson',
+    '1964-10-30',
+    null,
+    'https://br.web.img3.acsta.net/c_310_420/pictures/15/05/27/21/15/457245.jpg',
+    1
+),
+(
+	'Peter Jackson',
+	'1961-10-31',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/medias/nmedia/18/92/91/45/20224862.jpg',
+    1
+),
+(
+	'Shawn Levy',
+	'1968-07-23',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/15/06/10/18/29/294598.jpg',
+    1
+),
+(
+	'Tetsurô Araki',
+	'1976-11-05',
+    null,
+	'https://images.static-bluray.com/products/22/41785_1_large.jpg',
+    1
+),
+(
+	'Keenen Ivory Wayans',
+	'1958-06-08',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/15/05/28/20/24/237848.jpg',
+    1
+);
+
+CREATE TABLE Atores(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(100) NOT NULL,
+    nascimento DATE NOT NULL,
+    falecimento DATE,
+    foto VARCHAR(200) NOT NULL,
+    id_sexo INT,
+	CONSTRAINT SexoAtor FOREIGN KEY (id_sexo) REFERENCES Sexos(id)
+);
+INSERT INTO Atores(nome, nascimento,falecimento,foto,id_sexo)VALUES
+(
+'Robert Downey Jr.',
+'1965-04-04',
+null,
+'https://br.web.img3.acsta.net/c_310_420/pictures/18/06/29/00/35/0101925.jpg',
+1
+),
+(
+	'Adam Sandler',
+	'1966-09-09',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/17/06/20/16/57/103535.jpg',
+    1
+),
+(
+	'Chris Rock',
+	'1965-02-07',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/93/31/36/20248941.jpg',
+    1
+),
+(
+	'Kevin James',
+	'1965-04-26',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/94/12/15/20304513.jpg',
+    1
+),
+(
+	'David Spade',
+	'1964-07-22',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/18/06/29/16/57/2462090.jpg',
+    1
+),
+(
+	'Salma Hayek',
+	'1966-09-02',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/19/11/19/01/46/3123891.jpg',
+    2
+),
+(
+	'Cameron Boyce',
+	'1999-05-28',
+    '2019-07-06',
+	'https://br.web.img3.acsta.net/c_310_420/pictures/19/03/15/21/15/2143380.jpg',
+    1
+),
+(
+	'Jake Goldberg',
+	'1996-02-07',
+    null,
+	'https://m.media-amazon.com/images/M/MV5BNmNkNTVhMGYtZjE5Mi00MjQ0LWExNTYtZjU2NDczM2JmNTVjXkEyXkFqcGdeQXVyMTM2MTE1Nzg0._V1_.jpg',
+    1
+),
+(
+	'Alexys Nycole Sanchez',
+	'2003-06-29',
+    null,
+	'https://m.media-amazon.com/images/M/MV5BNzMyODg5MDEtOWQ4ZS00MzE5LTllYTYtNGRhOGJmYzBmY2U3XkEyXkFqcGdeQXVyMjEyMzc2NTk@._V1_FMjpg_UX1000_.jpg',
+    2
+),
+(
+	'Taylor Lautner',
+	'1992-02-11',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/95/53/48/20412947.jpg',
+    1
+),
+(
+	'Jason Schwartzman',
+	'1980-06-26',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/18/09/19/22/28/1040525.jpg',
+    1
+),
+(
+	'Rashida Jones',
+	'1976-02-25',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/18/09/13/19/52/4932131.jpg',
+    2
+),
+(
+	'J.K. Simmons',
+	'1955-01-09',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/15/10/21/14/41/204594.jpg',
+    1
+),
+(
+	'John Travolta',
+	'1954-02-18',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/medias/nmedia/18/35/26/97/20186850.jpg',
+    1
+),
+(
+	'Samuel L. Jackson',
+	'1948-12-21',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/18/07/26/21/10/4344066.jpg',
+    1
+),
+(
+	'Bruce Willis',
+	'1955-03-19',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/18/07/26/20/59/1349875.jpg',
+    1
+),
+(
+	'Uma Thurman',
+	'1970-04-29',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/19/08/29/21/14/0483094.jpg',
+    2
+),
+(
+	'Edward Norton',
+	'1969-08-18',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/18/07/25/21/56/3416190.jpg',
+    1
+),
+(
+	'Brad Pitt',
+	'1963-12-18',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/19/03/19/17/23/0985270.jpg',
+    1
+),
+(
+	'Helena Bonham Carter',
+	'1966-05-26',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/18/09/03/22/10/1336392.jpg',
+    2
+),
+(
+	'Nicolas Cage',
+	'1964-01-07',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/15/07/20/18/14/582462.jpg',
+    1
+),
+(
+	'Eva Mendes',
+	'1974-03-05',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/19/05/08/00/26/4952129.jpg',
+    2
+),
+(
+	'Sam Elliott',
+	'1944-08-09',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/18/09/17/15/38/5936959.jpg',
+    1
+),
+(
+	'Wes Bentley',
+	'1978-09-04',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/15/06/01/16/47/325178.jpg',
+    1
+),
+(
+	'Elijah Wood',
+	'1981-01-28',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/15/05/28/17/28/399384.jpg',
+    1
+),
+(
+	'Sean Astin',
+	'1971-02-25',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/19/07/08/16/07/4147422.jpg',
+    1
+),
+(
+	'Viggo Mortensen',
+	'1958-10-20',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/18/09/18/21/23/3866488.jpg',
+    1
+),
+(
+	'Ian McKellen',
+	'1939-05-25',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/92/43/17/20198915.jpg',
+    1
+),
+(
+	'Ian Holm',
+	'1931-09-12',
+    '2020-06-19',
+	'https://br.web.img3.acsta.net/c_310_420/pictures/15/07/16/21/22/426928.jpg',
+    1
+),
+(
+	'Ryan Reynolds',
+	'1976-10-23',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/15/07/28/17/15/280194.jpg',
+    1
+),
+(
+	'Jodie Comer',
+	'1993-03-11',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/20/01/06/23/10/1440387.jpg',
+    2
+),
+(
+	'Joe Keery',
+	'1994-04-24',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/19/07/08/15/54/5563340.jpg',
+    1
+),
+(
+	'Taika Waititi',
+	'1975-08-16',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/19/10/16/00/10/5197437.jpg',
+    1
+),
+(
+	'Jun Shison',
+	'1995-03-05',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/19/03/20/17/53/1795301.jpg',
+    1
+),
+(
+	'Mamoru Miyano',
+	'1983-06-08',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/15/12/15/19/17/507859.jpg',
+    1
+),
+(
+	'Yûki Kaji',
+	'1985-09-03',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/17/08/03/19/02/204125.jpg',
+    1
+),
+(
+	"Shin'ichirô Miki",
+	'1968-03-18',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/21/07/06/17/44/3935117.jpg',
+    1
+),
+(
+	'Sayaka Senbongi',
+	'1995-11-24',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/21/07/14/17/08/5273739.jpg',
+    2
+),
+(
+	"Shawn Wayans",
+	'1971-01-19',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/16/03/03/13/58/317633.jpg',
+    1
+),
+(
+	"Marlon Wayans",
+	'1972-07-23',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/15/06/11/14/51/401681.jpg',
+    1
+),
+(
+	"Maitland Ward",
+	'1977-02-03',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/94/42/50/20328099.jpg',
+    2
+),
+(
+	"Anne Dudek",
+	'1975-03-22',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/17/03/24/15/25/154337.jpg',
+    2
+),
+(
+	"Terry Crews",
+	'1968-07-30',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/18/08/01/20/13/3535250.jpg',
+    1
+),
+(
+	"Chris Evans",
+	'1981-06-13',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/19/04/22/19/59/2129500.jpg',
+    1
+),
+(
+	"Mark Ruffalo",
+	'1967-11-22',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/19/04/22/20/02/3083743.jpg',
+    1
+),
+(
+	"Chris Hemsworth",
+	'1983-08-11',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/19/06/05/12/04/5240675.jpg',
+    1
+),
+(
+	"Scarlett Johansson",
+	'1984-11-22',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/20/01/07/02/04/3952839.jpg',
+    2
+),
+(
+	"Jeremy Renner",
+	'1971-01-07',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/19/04/23/01/02/3070093.jpg',
+    1
+),
+(
+	"Brie Larson",
+	'1989-10-01',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/16/02/29/14/46/104223.jpg',
+    2
+),
+(
+	"Paul Rudd",
+	'1969-04-06',
+    null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/18/07/05/00/54/2308079.jpg',
+    1
+)
+;
+
+CREATE TABLE diretor_nacionalidade(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+id_diretor INT NOT NULL,
+id_nacionalidade INT NOT NULL,
+CONSTRAINT NacionalidadeDoDiretor_diretor FOREIGN KEY (id_diretor) REFERENCES Diretores(id),
+CONSTRAINT NacionalidadeDoDiretor_nacionalidade FOREIGN KEY (id_nacionalidade) REFERENCES Nacionalidades(id)
+);
+INSERT INTO diretor_nacionalidade(id_diretor,id_nacionalidade)VALUES
+(1,63),
+(2,63),
+(3,63),
+(4,63),
+(5,62),
+(6,63),
+(7,63),
+(8,135),
+(9,35),
+(9,63),
+(10,97),
+(11,63);
+CREATE TABLE ator_nacionalidade(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+id_ator INT NOT NULL,
+id_nacionalidade INT NOT NULL,
+CONSTRAINT NacionalidadeDoAtor_ator FOREIGN KEY (id_ator) REFERENCES Atores(id),
+CONSTRAINT NacionalidadeDoAtor_nacionalidade FOREIGN KEY (id_nacionalidade) REFERENCES Nacionalidades(id)
+);
+
+INSERT INTO ator_nacionalidade(id_ator,id_nacionalidade)VALUES
+(1,63),
+(2,63),
+(3,63),
+(4,63),
+(5,63),
+(6,120),
+(6,63),
+(7,63),
+(8,63),
+(9,63),
+(10,63),
+(11,63),
+(12,63),
+(13,63),
+(14,63),
+(15,63),
+(16,63),
+(17,63),
+(18,63),
+(19,63),
+(20,149),
+(21,63),
+(22,63),
+(23,63),
+(24,63),
+(25,63),
+(26,63),
+(27,63),
+(28,63),
+(29,63),
+(30,35),
+(30,63),
+(31,149),
+(32,63),
+(33,135),
+(34,97),
+(35,97),
+(36,97),
+(37,97),
+(38,97),
+(39,63),
+(40,63),
+(41,63),
+(42,63),
+(43,63),
+(44,63),
+(45,63),
+(46,12),
+(47,63),
+(47,52),
+(48,63),
+(49,63),
+(50,63)
+;
+CREATE TABLE Classificacao_Indicativa(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    idade VARCHAR(2) NOT NULL,
+    icone VARCHAR(200) NOT NULL,
+    descricao TEXT
+);
+INSERT INTO Classificacao_Indicativa(idade,icone,descricao)VALUES(
+	'L',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/DJCTQ_-_L.svg/75px-DJCTQ_-_L.svg.png',
+    'Violência: Arma sem violência; Morte sem Violência; Ossada ou esqueleto sem violência; Violência Fantasiosa.
+Sexo e Nudez: Nudez não erótica.
+Drogas: Consumo moderado ou insinuado de droga lícita.'
+),
+(
+	'10',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/DJCTQ_-_10.svg/75px-DJCTQ_-_10.svg.png',
+    'Violência: Angústia; Arma com violência; Ato criminoso sem violência; Linguagem depreciativa; Medo ou tensão; Ossada ou esqueleto com resquício de ato de violência
+Sexo e Nudez: Conteúdo educativo sobre sexo.
+Drogas: Descrição do consumo de droga lícita; Discussão sobre o tema tráfico de drogas[15]; Uso medicinal de droga ilícita.'
+),
+(
+	'12',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/DJCTQ_-_12.svg/75px-DJCTQ_-_12.svg.png',
+    'Violência: Agressão verbal; Assédio sexual; Ato violento; Ato violento contra animal; Bullying; Descrição de violência; Exposição ao perigo; Exposição de cadáver; Exposição de pessoa em situação constrangedora ou degradante; Lesão corporal; Morte derivada de ato heróico; Morte natural ou acidental com dor ou violência; Obscenidade; Presença de sangue; Sofrimento da vítima; Supervalorização da beleza física; Supervalorização do consumo; Violência psicológica.
+Sexo e Nudez: Apelo sexual; Carícia sexual; Insinuação sexual; Linguagem chula; Linguagem de conteúdo sexual; Masturbação; Nudez velada; Simulação de sexo.
+Drogas: Consumo de droga lícita; Consumo irregular de medicamento; Discussão sobre legalização de droga ilícita; Indução ao uso de droga lícita; Menção a droga ilícita.'
+),
+(
+	'14',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/DJCTQ_-_14.svg/75px-DJCTQ_-_14.svg.png',
+    'Violência: Aborto;
+Assassinato; Estigma ou preconceito; Eutanásia;
+Exploração sexual; Morte intencional; Pena de morte.
+Sexo e Nudez: Erotização; Nudez; Prostituição; Relação sexual; Vulgaridade.
+Drogas: Consumo insinuado de droga ilícita; Descrição do consumo ou tráfico de droga ilícita.'
+),
+(
+	'16',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/DJCTQ_-_16.svg/75px-DJCTQ_-_16.svg.png',
+    'Violência: Ato de pedofilia; Crime de ódio; Estupro ou coação sexual; Mutilação; Suicídio; Tortura; Violência gratuita ou banalização da violência.
+Sexo e Nudez: Relação sexual intensa.
+Drogas: Consumo de droga ilícita; Indução ao consumo de droga ilícita; Produção ou tráfico de droga ilícita.'
+),
+(
+	'18',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/DJCTQ_-_18.svg/75px-DJCTQ_-_18.svg.png',
+    'Violência: Apologia à violência; Crueldade.
+Sexo e Nudez: Sexo explícito; Situação sexual complexa ou de forte impacto.
+Drogas: Apologia ao uso de droga ilícita.'
+);
+CREATE TABLE Generos(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(30) NOT NULL
+);
+INSERT INTO Generos(nome) VALUES
+('Ação'),
+('Adolescente'),
+('Animação'),
+('Anime'),
+('Aventura'),
+('Comédia'),
+('Documentário'),
+('Drama'),
+('Esporte'),
+('Família'),
+('Fantasia'),
+('Faroeste'),
+('Ficção Científica'),
+('Guerra'),
+('Musical'),
+('Policial'),
+('Romance'),
+('Slasher'),
+('Super-herói'),
+('Suspense'),
+('Terror');
+
+
+
+CREATE TABLE Filmes(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE KEY, 
+    nome VARCHAR(80) NOT NULL,
+    sinopse TEXT NOT NULL,
+    duracao TIME NOT NULL,
+    data_lancamento DATE NOT NULL,
+    data_relancamento DATE,
+    foto_capa VARCHAR(200) NOT NULL,
+	foto_fundo VARCHAR(200) NOT NULL,
+    cor VARCHAR(7) NOT NULL,
+    id_classificacao_indicativa INT,
+    CONSTRAINT Classificacao_filme FOREIGN KEY (id_classificacao_indicativa) REFERENCES Classificacao_Indicativa(id)
+    );
+
+INSERT INTO Filmes(nome,sinopse,duracao,data_lancamento,data_relancamento,foto_capa,foto_fundo,cor,id_classificacao_indicativa) VALUES (
+	"Gente Grande 2",
+    "Lenny (Adam Sandler), Eric (Kevin James), Kurt (Chris Rock) e Marcus (David Spade) voltam a morar na mesma cidade. Lá, suas vidas seguem o curso natural dos adultos, seja pela existência dos problemas com as esposas para uns, com os filhos para outros, ou tudo junto e misturado. A coisa dá uma complicada quando os marmanjos pretendiam matar a saudade num dia de folga e acabam encarando os jovens da região, que agora dominam o lugar. É quando eles acabam tendo que enfrentar alguns fantasmas do passado, entre eles a covardia diante de valentões e o famigerado bullying na escola. Mas algumas surpresas estão para acontecer, como a chegada de um filho rebelde para Marcus domar, uma possível gravidez e uma festa de arromba, que não vai deixar pedra sobre pedra.",
+    '01:41:00',
+    '2013-08-16',
+    null,
+    'https://br.web.img3.acsta.net/c_310_420/pictures/210/049/21004903_20130510170049514.jpg',
+    'https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABQDRNfcHClquNiwuG4sA97e769TjAeNCiVbX31NdgzVU4uMZCcobLI1wFBO9sRpSTHD98gWlEegOjdITw_E6WFksoInYPbYpA9XW.jpg?r=075',
+    '#299EFF',
+    3
+),
+(
+	"Klaus",
+	"Em Smeerensburg, remota ilha localizada acima do Círculo Ártico, Jesper (Jason Schwartzman) é um estudante da Academia Postal que enfrenta um sério problema: os habitantes da cidade brigam o tempo todo, sem demonstrar o menor interesse por cartas. Prestes a desistir da profissão, ele encontra apoio na professora Alva (Rashida Jones) e no misterioso carpinteiro Klaus (J.K. Simmons), que vive sozinho em sua casa repleta de brinquedos feitos a mão.",
+    '01:36:00',
+    '2020-04-8',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/19/10/09/17/03/0582059.jpg',
+    'https://sm.ign.com/ign_br/screenshot/default/images-8_g9k6.jpg',
+    '#FF2929',
+    2
+),
+(
+	"Pulp Fiction - Tempo de Violência",
+	"Vincent Vega (John Travolta) e Jules Winnfield (Samuel L. Jackson) são dois assassinos profissionais trabalham fazendo cobranças para Marsellus Wallace (Ving Rhames), um poderosos gângster. Vega é forçado a sair com a garota do chefe, temendo passar dos limites; enquanto isso, o pugilista Butch Coolidge (Bruce Willis) se mete em apuros por ganhar luta que deveria perder.",
+    '02:29:00',
+    '1995-02-18',
+	null,
+	'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/87/16/32/19872655.jpg',
+    'https://tm.ibxk.com.br/2021/11/03/03153403215312.jpg',
+    '#DD7C55',
+    6
+),
+(	"Clube da Luta",
+	"Jack (Edward Norton) é um executivo jovem, trabalha como investigador de seguros, mora confortavelmente, mas ele está ficando cada vez mais insatisfeito com sua vida medíocre. Para piorar ele está enfrentando uma terrível crise de insônia, até que encontra uma cura inusitada para o sua falta de sono ao frequentar grupos de auto-ajuda. Nesses encontros ele passa a conviver com pessoas problemáticas como a viciada Marla Singer (Helena Bonham Carter) e a conhecer estranhos como Tyler Durden (Brad Pitt). Misterioso e cheio de ideias, Tyler apresenta para Jack um grupo secreto que se encontra para extravasar suas angústias e tensões através de violentos combates corporais.",
+    '02:19:00',
+    '1999-08-29',
+    null,
+    'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/90/95/96/20122166.jpg',
+    'https://c4.wallpaperflare.com/wallpaper/752/9/318/movie-fight-club-brad-pitt-edward-norton-wallpaper-preview.jpg',
+    '#98D40E',
+    6
+),
+(
+	"Motoqueiro Fantasma",
+	"Quando Johnny Blaze (Nicolas Cage) descobre que seu pai tem câncer terminal, ele aceita um pacto com Mefistófeles, dando sua alma pela saúde de seu amado pai. Em troca Johnny se transforma à noite no Motoqueiro Fantasma, o justiceiro de alguns demônios bastante cruéis. Mas o diabo o engana e Johnny então deixa sua cidade, seus amigos e sua namorada. Muitos anos depois, agora trabalhando como dublê, Johnny Blaze torna-se famoso, e reencontra Roxanne, sua namorada da adolescência, que virou repórter de televisão. Ainda forçado a obedecer as ordens de Mefistófeles, Johnny decide enfrentá-lo de forma a usar sua maldição para proteger pessoas inocentes.",
+    '01:50:00',
+    '2007-03-2',
+	null,
+    'https://br.web.img2.acsta.net/c_310_420/medias/nmedia/18/90/84/14/20115747.jpg',
+    'https://i0.wp.com/nerdizmo.uai.com.br/wp-content/uploads/sites/29/2023/03/nicolas-cage-afirma-nao-precisar-estar-no-mcu.jpeg?fit=1280%2C720&ssl=1',
+    '#F02C02',
+    4
+),
+(
+	"O Senhor dos Anéis - A Sociedade do Anel",	
+	"Numa terra fantástica e única, chamada Terra-Média, um hobbit (seres de estatura entre 80 cm e 1,20 m, com pés peludos e bochechas um pouco avermelhadas) recebe de presente de seu tio o Um Anel, um anel mágico e maligno que precisa ser destruído antes que caia nas mãos do mal. Para isso o hobbit Frodo (Elijah Woods) terá um caminho árduo pela frente, onde encontrará perigo, medo e personagens bizarros. Ao seu lado para o cumprimento desta jornada aos poucos ele poderá contar com outros hobbits, um elfo, um anão, dois humanos e um mago, totalizando 9 pessoas que formarão a Sociedade do Anel.",
+    '02:58:00',
+    '2002-01-1',
+	null,
+    'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/92/91/32/20224832.jpg',
+    'https://static01.nyt.com/images/2021/12/20/arts/19lotr-fans/merlin_10447475_b4b04c7c-8b20-483c-8ca2-6214e5dd302c-articleLarge.jpg?quality=75&auto=webp&disable=upscale',
+    '#E0E30D',
+    3
+),
+(
+	"Free Guy - Assumindo o Controle",
+	"Em Free Guy - Assumindo o Controle, Guy é um personagem não-jogador (NPC) em Free City, um jogo de RPG online multijogador massivo (MMORPG) desenvolvido pela Soonami Studio. Sem saber que o mundo em que vive é um videogame, ele trabalha como caixa de banco ao lado de seu melhor amigo, o segurança do banco Buddy, em uma entediante rotina. No mundo real, Millie Rusk está tentando encontrar evidências de que o código-fonte que ela escreveu junto com seu amigo Walter McKey foi roubado pelo desenvolvedor chefe de Soonami, Antwan Hovachelik. No jogo, Millie, que joga como Molotov Girl, chama a atenção de Guy cantando sua música favorita, de Mariah Carey, e ele começa a se desviar de sua programação. Pegando um par de óculos de sol de um jogador roubando o banco, Guy vê Free City através de uma versão única da interface do jogador e surpreendentemente vira um jogador. Agora ele precisa aceitar sua realidade e lidar com o fato de que é o único que pode salvar o mundo.",
+    REPLACE('01:55:00',":",""),
+    '2021-08-19',
+	null,
+    'https://br.web.img3.acsta.net/c_310_420/pictures/21/06/10/20/47/1652456.jpg',
+    'https://isabelaboscov.files.wordpress.com/2021/09/free-guy_feat.jpg',
+    '#0DD3E3',
+    3
+),
+(
+	"Bubble",
+	"Em Bubble, após uma chuva de bolhas, uma cidade vira um mundo sem gravidade, completamente isolada dos outros locais. Por essa particularidade, o lugar vira um refúgio de  jovens órfãos, praticantes de parkour. Hibiki, uma dessas crianças, acaba caindo no mar, fora da cidade sem gravidade, após uma manobra arriscada. Ele cai no mar, mas é salvo por Uta, uma garota com poderes especiais. E esse encontro pode mudar a vida de ambos.",
+    '01:40:00',
+    '2022-04-28',
+	null,
+	'https://br.web.img3.acsta.net/c_310_420/pictures/21/12/07/02/28/1507296.jpg',
+    'https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABbmBI_ETtHxHcOEngBqHGH_6eWPpqXXeS45G50FcXvtj7oYLHurC3BSXEAycHYUPW6oKeOsyIBvLSnrqFwlT1T57afj9_HLhUeQy.jpg?r=6dc',
+    '#0DD3E3',
+    3
+),
+(
+	"As Branquelas",
+	"Em As Branquelas, os irmãos Marcus (Marlon Wayans) e Kevin Copeland (Shawn Wayans) são detetives do FBI que estão com problemas no trabalho. A última investigação da dupla foi um grande fracasso e eles estão sob a ameaça de serem demitidos. Quando um plano para sequestrar as mimadas irmãs Brittany (Maitland Ward) e Tiffany Wilson (Anne Dudek) é descoberto, o caso é entregue aos principais rivais dos irmãos Copeland, os agentes Vincent Gomez (Eddie Velez) e Jack Harper (Lochlyn Munro). Para aumentar ainda mais a humilhação da dupla, eles são escalados para escoltar as jovens mimadas do aeroporto até o local de um evento pelo qual elas esperaram por meses. Porém no trajeto um acidente de carro provoca um verdadeiro desastre: enquanto uma das irmãs arranha o nariz, a outra corta o lábio. Desesperadas, elas se recusam a ir ao evento. É quando,para salvar o emprego, Marcus e Kevin decidem por assumir as identidades das irmãs.",
+    '01:49:00',
+    '2004-08-27',
+    '2005-02-26',
+	'https://br.web.img2.acsta.net/c_310_420/medias/nmedia/18/97/52/82/20534159.jpg',
+    'https://sm.ign.com/ign_br/screenshot/default/blob_v2xz.jpg',
+    '#ffb5a5',
+    3
+),
+(
+	"Vingadores: Ultimato",
+	"Em Vingadores: Ultimato, após Thanos eliminar metade das criaturas vivas em Vingadores: Guerra Infinita, os heróis precisam lidar com a dor da perda de amigos e seus entes queridos. Com Tony Stark (Robert Downey Jr.) vagando perdido no espaço sem água nem comida, o Capitão América/Steve Rogers (Chris Evans) e a Viúva Negra/Natasha Romanov (Scarlett Johansson) precisam liderar a resistência contra o titã louco.",
+    '03:01:00',
+    '2019-04-25',
+    null,
+	'https://br.web.img2.acsta.net/c_310_420/pictures/19/04/26/17/30/2428965.jpg',
+    'https://assets.b9.com.br/wp-content/uploads/2019/06/EBC2000_v829.1233-1280x720.jpg',
+    '#563f8c',
+    3
+);
+
+CREATE TABLE diretor_filme(	
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE KEY, 
+id_diretor INT NOT NULL,
+id_filme INT NOT NULL,
+CONSTRAINT FilmeDiretor_Diretor FOREIGN KEY (id_diretor) REFERENCES Diretores(id),
+CONSTRAINT FilmeDiretor_Filme   FOREIGN KEY (id_filme)   REFERENCES Filmes(id)
+);
+INSERT INTO diretor_filme (id_diretor,id_filme) VALUES 
+(1,3),
+(2,10),
+(3,10),
+(4,1),
+(5,2),
+(6,4),
+(7,5),
+(8,6),
+(9,7),
+(10,8),
+(11,9);
+
+CREATE TABLE ator_filme(	
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE KEY, 
+id_filme INT NOT NULL,
+id_ator INT NOT NULL,
+CONSTRAINT FilmeAtor_Filme FOREIGN KEY (id_filme) REFERENCES Filmes(id),
+CONSTRAINT FilmeAtor_Ator FOREIGN KEY (id_ator) REFERENCES Atores(id)
+);
+INSERT INTO ator_filme (id_ator,id_filme) VALUES 
+(2,1),
+(3,1),
+(4,1),
+(5,1),
+(6,1),
+(7,1),
+(8,1),
+(9,1),
+(10,1),
+(11,2),
+(12,2),
+(13,2),
+(14,3),
+(15,3),
+(16,3),
+(17,3),
+(18,4),
+(19,4),
+(20,4),
+(21,5),
+(22,5),
+(23,5),
+(24,5),
+(25,6),
+(26,6),
+(27,6),
+(28,6),
+(29,6),
+(30,7),
+(31,7),
+(32,7),
+(33,7),
+(34,8),
+(35,8),
+(36,8),
+(37,8),
+(38,8),
+(39,9),
+(40,9),
+(41,9),
+(42,9),
+(43,9),
+(1,10),
+(44,10),
+(45,10),
+(46,10),
+(47,10),
+(48,10),
+(49,10),
+(50,10),
+(15,10),
+(33,10)
+;
+CREATE TABLE filme_genero(	
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE KEY, 
+id_filme INT NOT NULL,
+id_genero INT NOT NULL,
+CONSTRAINT FilmeGenero_Filme FOREIGN KEY (id_filme) REFERENCES Filmes(id),
+CONSTRAINT FilmeGenero_Genero FOREIGN KEY (id_genero) REFERENCES Generos(id)
+);
+
+INSERT INTO filme_genero(id_filme,id_genero)VALUES
+(1,6),
+(1,10),
+(2,3),
+(2,5),
+(2,10),
+(3,1),
+(3,8),
+(3,20),
+(4,8),
+(4,20),
+(5,1),
+(5,8),
+(5,11),
+(5,12),
+(5,19),
+(6,1),
+(6,5),
+(6,8),
+(6,11),
+(6,14),
+(7,1),
+(7,5),
+(7,6),
+(7,13),
+(7,17),
+(8,1),
+(8,3),
+(8,4),
+(8,5),
+(8,8),
+(8,13),
+(9,6),
+(9,10),
+(10,1),
+(10,13),
+(10,14),
+(10,19)
+;
+SELECT filme_genero.id,Generos.id AS id_genero,Generos.nome FROM Generos JOIN filme_genero ON Generos.id = filme_genero.id_genero WHERE id_filme = 7;
+SELECT filme_genero.id, Generos.id,Generos.nome FROM Generos JOIN filme_genero ON Generos.id = filme_genero.id_genero WHERE id_filme =9;
+CREATE TABLE Usuarios(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE KEY,
+    nome VARCHAR(80) NOT NULL,
+    nascimento DATE NOT NULL,
+    login VARCHAR(50) NOT NULL,
+    senha VARCHAR (100) NOT NULL,
+    id_sexo INT,
+    CONSTRAINT Usuario_Sexo FOREIGN KEY (id_sexo) REFERENCES Sexos(id),
+    admin BOOLEAN DEFAULT false
+);
+INSERT INTO Usuarios(nome,nascimento,login,senha,id_sexo) VALUES (
+	'Rubens Luiz Lobo de Almeida',
+    '2007-03-16',
+    'rubens@',
+    'senha',
+    1
+),
+(
+	'Otavio Ugá',
+    '1983-06-20',
+    'otavio@email',
+    'superoito',
+    1
+);
+
+
+CREATE TABLE Favoritos(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_usuario INT NOT NULL,
+	id_filme INT NOT NULL,
+    CONSTRAINT UsuarioFavorito_usuario FOREIGN KEY(id_usuario) REFERENCES Usuarios(id),
+	CONSTRAINT UsuarioFavorito_filme FOREIGN KEY(id_filme) REFERENCES Filmes(id)
+    );
+INSERT INTO Favoritos(id_usuario,id_filme) VALUES 
+(1,3),
+(1,6),
+(2,3),
+(1,2),
+(1,1),
+(1,7),
+(1,8),
+(1,9),
+(1,4),
+(1,5),
+(1,2)
+;
+
+
+
+
+
+
+	### TESTES DE FILTRAGEM
+# Sem filtro
+SELECT Filmes.id,Filmes.nome,sinopse,duracao,data_lancamento,data_relancamento,foto_capa,foto_fundo,cor,id_classificacao_indicativa AS classificacao, Generos.nome AS Genero FROM Filmes LEFT JOIN filme_genero ON Filmes.id = filme_genero.id_filme LEFT JOIN Generos ON filme_genero.id_genero = Generos.id;
+
+# Filtro de Classificacao, apenas
+SELECT Filmes.id,Filmes.nome,sinopse,duracao,data_lancamento,data_relancamento,foto_capa,foto_fundo,cor,id_classificacao_indicativa AS classificacao, Generos.nome AS Genero FROM Filmes LEFT JOIN filme_genero ON Filmes.id = filme_genero.id_filme LEFT JOIN Generos ON filme_genero.id_genero = Generos.id WHERE 
+(Filmes.id_classificacao_indicativa<=3);
+
+# Filtro de gênero, apenas
+SELECT Filmes.id,Filmes.nome,sinopse,duracao,data_lancamento,data_relancamento,foto_capa,foto_fundo,cor,id_classificacao_indicativa AS classificacao, Generos.nome AS Genero FROM Filmes LEFT JOIN filme_genero ON Filmes.id = filme_genero.id_filme LEFT JOIN Generos ON filme_genero.id_genero = Generos.id WHERE 
+(Generos.id = 2 OR Generos.id = 4 OR Generos.id = 5); 
+
+# Filtro de data inicial, apenas
+SELECT Filmes.id,Filmes.nome,sinopse,duracao,data_lancamento,data_relancamento,foto_capa,foto_fundo,cor,id_classificacao_indicativa AS classificacao, Generos.nome AS Genero FROM Filmes LEFT JOIN filme_genero ON Filmes.id = filme_genero.id_filme LEFT JOIN Generos ON filme_genero.id_genero = Generos.id WHERE 
+(Filmes.data_lancamento >= '2000-01-01'); 
+
+# Filtro de data limite, apenas
+SELECT Filmes.id,Filmes.nome,sinopse,duracao,data_lancamento,data_relancamento,foto_capa,foto_fundo,cor,id_classificacao_indicativa AS classificacao, Generos.nome AS Genero FROM Filmes LEFT JOIN filme_genero ON Filmes.id = filme_genero.id_filme LEFT JOIN Generos ON filme_genero.id_genero = Generos.id WHERE 
+(Filmes.data_lancamento <= '2020-01-01'); 
+
+# Filtros de data
+SELECT Filmes.id,Filmes.nome,sinopse,duracao,data_lancamento,data_relancamento,foto_capa,foto_fundo,cor,id_classificacao_indicativa AS classificacao, Generos.nome AS Genero FROM Filmes LEFT JOIN filme_genero ON Filmes.id = filme_genero.id_filme LEFT JOIN Generos ON filme_genero.id_genero = Generos.id WHERE 
+(Filmes.data_lancamento >= '2000-01-01' AND Filmes.data_lancamento <= '2020-01-01'); 
+
+# Todos os filtros
+SELECT Filmes.id,Filmes.nome,sinopse,duracao,data_lancamento,data_relancamento,foto_capa,foto_fundo,cor,id_classificacao_indicativa AS classificacao, Generos.nome AS Genero FROM Filmes LEFT JOIN filme_genero ON Filmes.id = filme_genero.id_filme LEFT JOIN Generos ON filme_genero.id_genero = Generos.id WHERE 
+(Filmes.id_classificacao_indicativa<=5) AND (Filmes.data_lancamento >= '0001-01-01' AND Filmes.data_lancamento <= '9999-12-31') AND (Generos.id = 2 OR Generos.id = 4 OR Generos.id = 5)
+ORDER BY Filmes.id; 
+
+# PEGA APENAS FILMES COM CLASSIFICAÇÃO INDICATIVA IGUAL A 10/12 ANOS, COM DURAÇÃO INFERIOR A 1:50h, E QUE POSSUA DATA DE RELANÇAMENTO
+SELECT Filmes.id,nome,sinopse,duracao,data_lancamento,foto_capa,foto_fundo,cor,Classificacao_indicativa.idade AS classificacao FROM Filmes JOIN Classificacao_indicativa ON Filmes.id_classificacao_indicativa = Classificacao_indicativa.id WHERE (Filmes.id_classificacao_indicativa= 3 OR Filmes.id_classificacao_indicativa= 2) AND (Filmes.duracao < '01:50:00') AND (Filmes.data_relancamento IS NOT NULL);
+
+# PEGA OS USUÁRIOS E OS FAVORITOS
+SELECT Favoritos.id, Usuarios.nome AS usuario, Filmes.nome AS filme_favoritado FROM Usuarios JOIN Favoritos ON Usuarios.id = Favoritos.id_usuario JOIN Filmes ON Filmes.id = Favoritos.id_filme;
+SELECT Favoritos.id, Usuarios.nome AS usuario, Filmes.nome AS filme_favoritado FROM Favoritos INNER JOIN Usuarios ON Favoritos.id_usuario = Usuarios.id INNER JOIN Filmes ON Favoritos.id_filme = Filmes.id;
+
+# Verificar os gêneros dos filmes
+SELECT Filmes.Nome, Generos.nome FROM Filmes JOIN filme_genero ON Filmes.id = filme_genero.id_filme JOIN Generos ON filme_genero.id_genero = Generos.id;
+
+# Pega todas as informações do filme
+SELECT Filmes.id, Filmes.nome, Filmes.sinopse, Filmes.duracao, Filmes.data_lancamento, Filmes.data_relancamento, Filmes.foto_capa, Filmes.foto_fundo, Filmes.cor, Classificacao_indicativa.idade AS classificacao, ( SELECT GROUP_CONCAT(Generos.id SEPARATOR ', ')FROM filme_genero INNER JOIN Generos ON filme_genero.id_genero = Generos.id WHERE filme_genero.id_filme = Filmes.id ) AS genero FROM Filmes JOIN Classificacao_indicativa ON id_classificacao_indicativa = Classificacao_indicativa.id;
+
+
+# Dá ADMIN
+UPDATE Usuarios SET ADMIN = TRUE WHERE id = 1;
+
+#REPLACE
+select id,REPLACE(nome, '#',"'") AS nome,REPLACE(sinopse,"#","'") AS sinopse,duracao,data_lancamento,data_relancamento,foto_capa,foto_fundo,cor FROM Filmes;
+
+SELECT id FROM Filmes ORDER BY id DESC LIMIT 1;
+#last_insert_id() - permite retornar o último ID inserido em uma tabela
+#cast() - permite realizar a conversão de tipo de dados durante o select
+SELECT cast(last_insert_id() AS DECIMAL) AS id FROM Filmes LIMIT 1;
+
+SHOW TABLES;
+DESCRIBE Sexos;
+SELECT * FROM Nacionalidades;
+SELECT * FROM Sexos;
+SELECT * FROM Diretores;
+SELECT * FROM Classificacao_indicativa;
+SELECT * FROM Generos;
+SELECT * FROM Filmes;
+SELECT * FROM filme_genero;
+SELECT * FROM diretor_nacionalidade;
+SELECT * FROM diretor_filme;
+SELECT * FROM Atores;
+SELECT * FROM ator_nacionalidade;
+SELECT * FROM ator_filme;
+SELECT * FROM Usuarios;
+SELECT * FROM Favoritos;
+SELECT * FROM Favoritos WHERE Favoritos.id = 1;
+SELECT * FROM ator_filme;

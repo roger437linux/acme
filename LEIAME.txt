@@ -1,0 +1,95 @@
+
+** Usando API Node **
+
+
+0. Criar um servidor de banco de dados MySQL na Azure.
+
+Obs.: Após o servidor estar provisionado:
+
+- Menu Configurações -> Parâmetros do servidor -> require_secure_transport OFF
+
+
+
+1. Descompactar o arquivo api.zip da aplicação Node ou clonar do Github na VM Debian GNU/Linux.
+
+❯ mkdir api && cd api
+
+❯ unzip api.zip
+
+<OU>
+
+❯ git clone https://github.com/roger437linux/acme.git
+
+
+
+2. Configurar o endpoint do servidor MySQL na aplicação Node.
+
+❯ vi .env
+
+
+
+3. Criar banco de dados se restaurar tabelas.
+
+❯ mysql -utux -pABC123xyz -h <ENDPOINT_DB_SERVER> -e "CREATE DATABASE acme_filmes"
+
+❯ mysql -utux -pABC123xyz -h <ENDPOINT_DB_SERVER> acme_filmes < acme.sql
+
+
+
+4. Executar a aplicação Node localmente.
+
+
+❯ npm i
+
+❯ node server.js
+
+
+Obs.: Havendo erro de execução do Prisma, execute:
+
+❯ npx prisma generate
+
+
+
+5. Verificar no navegador de internet do host hospedeiro.
+
+http://<IPVM>:8080/acmefilmes/filmes
+
+
+
+6. Dockerizar a aplicação web node [Criar nova imagem Docker]
+
+Obs.: Criar novo repositório no Docker Hub chamado "acme".
+
+
+❯ docker build --tag <YOUR_ACCOUNT>/acme .
+
+
+
+7. Criar contêiner para testar a nova imagem e verificar no navegador de internet do host hospedeiro.
+
+❯ docker run -d --rm --name acme -p 8080:8080 <YOUR_ACCOUNT>/acme
+
+http://<IPVM>:8080/acmefilmes/filmes
+
+
+
+8. Enviar nova imagem para o Docker Hub
+
+❯ docker push <YOUR_ACCOUNT>/acme
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+9. Criar serviço de aplicativo Azure utilizando a imagem enviando ao Docker Hub.
+
+
+10. Criar Instância de Container Azure [ACI] utilizando a imagem enviando ao Docker Hub.
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
