@@ -103,3 +103,34 @@ http://<IPVM>:8080/acmefilmes/filmes
 ---------------------------------------------------------------------------------------------------
 
 
+
+❯ sgpt "Tenho uma aplicação de api em nodejs usando o prisma. Preciso criar variáveis de ambiente no sistema operacional e poder utilizar essas
+ variáveis de ambiente em uma string de conexão dentro do arquivo .env do prisma, como faço isso?"
+Para usar variáveis de ambiente no arquivo .env do Prisma, você pode definir as variáveis no sistema operacional e referenciá-las no arquivo
+.env. Aqui está um passo a passo:
+
+ 1 Defina as variáveis de ambiente no sistema operacional:
+   No Linux, você pode adicionar as variáveis ao arquivo ~/.zshrc para que sejam carregadas sempre que abrir um terminal:
+
+    export DATABASE_USER="seu_usuario"
+    export DATABASE_PASSWORD="sua_senha"
+    export DATABASE_HOST="seu_host"
+    export DATABASE_PORT="sua_porta"
+    export DATABASE_NAME="seu_banco"
+
+   Após adicionar, recarregue o arquivo:
+
+    source ~/.zshrc
+
+ 2 Use as variáveis no arquivo .env do Prisma:
+   No arquivo .env, você pode referenciar as variáveis de ambiente usando a sintaxe ${VARIAVEL}:
+
+    DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?schema=public"
+
+ 3 Certifique-se de que o Prisma está configurado para usar o arquivo .env:
+   O Prisma, por padrão, lê o arquivo .env na raiz do projeto. Certifique-se de que o arquivo está no local correto e que o Prisma está
+   configurado para usá-lo.
+
+Com isso, sua string de conexão usará as variáveis de ambiente definidas no sistema.
+~ ❯
+
