@@ -11,7 +11,7 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
-  //url      = "mysql://tux:ABC123xyz@unix2810.mysql.database.azure.com:3306/acme_filmes"
+  //url      = DATABASE_URL="mysql://${USER}:${PASSWORD}@${HOST}:3306/acme_filmes"
 }
 
 
