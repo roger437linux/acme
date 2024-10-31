@@ -71,26 +71,18 @@ http://<IPVM>:8080/acmefilmes/filmes
 http://<IPVM>:8080/acmefilmes/filmes
 
 
-
-8. Enviar nova imagem para o Docker Hub
+✔ 8. Enviar nova imagem para o Docker Hub
 
 ❯ docker push $ACCOUNT/acme
 
 
-
 ---------------------------------------------------------------------------------------------------
 
+✔ 9. Criar serviço de aplicativo Azure utilizando a imagem enviada ao Docker Hub.
 
-
-9. Criar serviço de aplicativo Azure utilizando a imagem enviando ao Docker Hub.
-
-
-10. Criar Instância de Container Azure [ACI] utilizando a imagem enviando ao Docker Hub.
-
-
+✔ 10. Criar Instância de Container Azure [ACI] utilizando a imagem enviad ao Docker Hub.
 
 ---------------------------------------------------------------------------------------------------
-
 
 
 ❯ sgpt "Tenho uma aplicação de api em nodejs usando o prisma. Preciso criar variáveis de ambiente no sistema operacional e poder utilizar essas
