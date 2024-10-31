@@ -80,7 +80,22 @@ http://<IPVM>:8080/acmefilmes/filmes
 
 ✔ 9. Criar serviço de aplicativo Azure utilizando a imagem enviada ao Docker Hub.
 
+
 ✔ 10. Criar Instância de Container Azure [ACI] utilizando a imagem enviad ao Docker Hub.
+
+
+✔ 11. No Serviço de Aplicativo Azure, criar as variáveis de ambiente:
+
+✅ Menu Configurações -> Variáveis de ambiente -> Configurações de aplicativo [+ Adicionar]
+
+Nome : USER
+Valor: <DATABASE_ADMIN_USER>
+
+Nome : PASSWORD
+Valor: <DATABASE_ADMIN_PASSWORD>
+
+Nome : HOST
+Valor: <IP_DATABASE_SERVER>
 
 ---------------------------------------------------------------------------------------------------
 
