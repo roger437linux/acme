@@ -1,83 +1,72 @@
 
-** Usando API Node **
+😃 Usando API Node 😃
 
 
-0. Criar um servidor de banco de dados MySQL na Azure.
+✔ 0. Criar um servidor de banco de dados MySQL na Azure.
 
-- User: tux
-- Pass: ABC123xyz
+- User: <Qualquer nome>
+- Pass: <Qualquer senha que não contenha o caracter '@'>
+
+⚽ Obs.: Sugestão:
+User: tux
+Pass: ABC123xyz
 
 
-Obs.: Após o servidor estar provisionado:
-
+⚽ Obs.: Após o servidor estar provisionado:
 - Menu Configurações -> Parâmetros do servidor -> require_secure_transport OFF
 
 
-
-1. Descompactar o arquivo api.zip ou clonar a aplicação Node do Github na VM Debian GNU/Linux.
+✔ 1. Criar um diretório e descompactar o arquivo api.zip ou clonar a aplicação Node do Github na VM Debian GNU/Linux.
 
 ❯ mkdir api && cd api
-
 ❯ unzip api.zip
 
 <OU>
 
+❯ mkdir api && cd api
 ❯ git clone https://github.com/roger437linux/acme.git
 
 
+✔ 2. Configurar o USER, PASSWORD e ADDRESS do servidor MySQL na aplicação Node.
 
-2. Configurar o endereço do servidor MySQL na aplicação Node.
+❯ export USER="seu_usuario"
+❯ export PASSWORD="sua_senha"
+❯ export HOST="seu_host"
+
+
+✔ 3. Criar banco de dados se restaurar tabelas.
 
 ❯ cd acme
-
-❯ vi .env
-
-
-
-3. Criar banco de dados se restaurar tabelas.
-
-❯ IP_DATABASE=<ENDPOINT_DB_SERVER>
-
-❯ mysql -utux -pABC123xyz -h $IP_DATABASE -e "CREATE DATABASE acme_filmes"
-
-❯ mysql -utux -pABC123xyz -h $IP_DATABASE acme_filmes < acme.sql
+❯ mysql -u$USER -p$PASSWORD -h$HOST -e "CREATE DATABASE acme_filmes"
+❯ mysql -u$USER -p$PASSWORD -h$HOST acme_filmes < acme.sql
+❯ mysql -u$USER -p$PASSWORD -h$HOST -e "SHOW TABLES" acme_filmes
 
 
-
-4. Executar a aplicação Node localmente.
-
+✔ 4. Executar a aplicação Node localmente.
 
 ❯ npm i
-
 ❯ node server.js
 
-
-Obs.: Havendo erro de execução do Prisma, execute:
-
+⚽ Obs.: Havendo erro de execução do Prisma, execute:
 ❯ npx prisma generate
 
 
-
-5. Verificar no navegador de internet do host hospedeiro.
+✔ 5. Verificar no navegador de internet do host hospedeiro.
 
 http://<IPVM>:8080/acmefilmes/filmes
 
 
+✔ 6. Dockerizar a aplicação web node [Criar nova imagem Docker]
 
-6. Dockerizar a aplicação web node [Criar nova imagem Docker]
-
-Obs.: Criar novo repositório no Docker Hub chamado "acme".
-
+⚽ Obs.: Criar novo repositório no Docker Hub chamado "acme".
 
 ❯ ACCOUNT=<YOUR_DOCKER_HUB_ACCOUNT>
-
 ❯ docker build --tag $ACCOUNT/acme .
 
 
+✔ 7. Criar contêiner para testar a nova imagem e verificar no navegador de internet do host hospedeiro.
 
-7. Criar contêiner para testar a nova imagem e verificar no navegador de internet do host hospedeiro.
-
-❯ docker run -d --rm --name acme -p 8080:8080 $ACCOUNT/acme
+❯ docker run -d --rm --name acme -p 8080:8080 -e USER=$USER -e PASSWORD=$PASSWORD -e HOST=$HOST $ACCOUNT/acme
 
 http://<IPVM>:8080/acmefilmes/filmes
 
